@@ -7,6 +7,7 @@ const block = document.getElementById('block');
 
 changeId.addEventListener('click', () => {
     fetchQuotes();
+    fetchImage();
     theme1 = random(0, 8);
     theme2 = random(0, 8);   
     
@@ -54,3 +55,20 @@ async function fetchQuotes(){
 };
 
 fetchQuotes();
+
+
+import { createClient } from 'pexels';
+
+const client = createClient('563492ad6f91700001000001998a1ea1e25141f4b8b0dcee37f638ef');
+const query = 'Nature';
+
+async function fetchImage(){
+    const {photos} = await client.photos.search({ query, per_page: 1 });
+    const photoSrc = document.getElementsById("photoSrc");
+
+    photoSrc.src = photos[0].src.small;
+}
+
+fetchImage();
+
+
