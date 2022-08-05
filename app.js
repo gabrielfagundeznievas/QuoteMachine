@@ -48,6 +48,7 @@ async function fetchQuotes(){
             'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
         }
     };
+
     try {
         const res = await fetch('https://quotes15.p.rapidapi.com/quotes/random/', options);
         const data = await res.json();
@@ -64,10 +65,9 @@ fetchQuotes();
 
 
 async function fetchImage(){
-    const res = await fetch('https://pixabay.com/api/?key=12602951-82448af3d3c4a1073e4b4ce5e&q=nature');
+    const number = random(1, 25);
+    const res = await fetch(`https://pixabay.com/api/?key=12602951-82448af3d3c4a1073e4b4ce5e&q=nature&page=${number}`);
     const data = await res.json();
-
-    console.log(data)
 
     const photoSrc = document.querySelector("#photoSrc");
 
