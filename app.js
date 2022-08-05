@@ -13,6 +13,7 @@ changeId.addEventListener('click', () => {
     bg[0].style.backgroundColor = color[theme1];
     // changeId.style.backgroundColor = color[theme2];
     // block.style.backgroundColor = color[theme2];
+    
     // Quitar foco
     changeId.blur();
 });
