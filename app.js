@@ -10,9 +10,13 @@ changeId.addEventListener('click', () => {
     fetchImage();
     theme1 = random(0, 8);
     theme2 = random(0, 8);   
-    
+
+    while(theme1 == theme2){        
+        theme2 = ramdom(0, 8);
+    }
+
     bg[0].style.backgroundColor = color[theme1];
-    // changeId.style.backgroundColor = color[theme2];
+    changeId.style.backgroundColor = color[theme2];
     // block.style.backgroundColor = color[theme2];
     
     // Quitar foco
