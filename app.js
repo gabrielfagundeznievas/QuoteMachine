@@ -12,7 +12,7 @@ changeId.addEventListener('click', () => {
     theme2 = random(0, 8);   
 
     while(theme1 == theme2){        
-        theme2 = ramdom(0, 8);
+        theme2 = random(0, 8);
     }
 
     bg[0].style.backgroundColor = color[theme1];
@@ -39,14 +39,15 @@ function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 };
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '5345d00af2msh355246a20962086p177ad1jsn0a5b49b7beac',
-		'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
-	}
-};
+
 async function fetchQuotes(){
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '5345d00af2msh355246a20962086p177ad1jsn0a5b49b7beac',
+            'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
+        }
+    };
     try {
         const res = await fetch('https://quotes15.p.rapidapi.com/quotes/random/', options);
         const data = await res.json();
@@ -62,18 +63,15 @@ async function fetchQuotes(){
 fetchQuotes();
 
 
-import { createClient } from 'pexels';
-
-const client = createClient('563492ad6f91700001000001998a1ea1e25141f4b8b0dcee37f638ef');
-const query = 'Nature';
-
 async function fetchImage(){
-    const {photos} = await client.photos.search({ query, per_page: 1 });
-    const photoSrc = document.getElementsById("photoSrc");
+    const res = await fetch('https://pixabay.com/api/?key=12602951-82448af3d3c4a1073e4b4ce5e&q=nature');
+    const data = await res.json();
 
-    photoSrc.src = photos[0].src.small;
+    console.log(data)
+
+    const photoSrc = document.querySelector("#photoSrc");
+
+    photoSrc.src = data.hits[random(0, 19)].largeImageURL;
 }
 
 fetchImage();
-
-
